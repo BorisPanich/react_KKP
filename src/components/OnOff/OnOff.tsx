@@ -6,7 +6,7 @@ type OnOffPropsType = {
 
 function OnOff(props: OnOffPropsType) {
 
-const [on, setOne] = useState<boolean>(false);
+    const [on, setOne] = useState<boolean>(false);
 
     const onStyle = {
         width: "30px",
@@ -36,19 +36,11 @@ const [on, setOne] = useState<boolean>(false);
         backgroundColor: on ? "yellow" : "white"
     }
 
-    // const onOffStyle = {
-    //     margin: "0",
-    //     position: "absolute",
-    //     top: "50 %",
-    //     left: "50 %",
-    //     marginRight: "-50 %",
-    //     transform: "translate(-50 %, -50 %)"
-    // }
 
     return (
         <div >
-            <div style={onStyle} onClick={() => {setOne(true)}}>On</div>
-            <div style={offStyle} onClick={() => {setOne(false)}} >Off</div>
+            <div style={onStyle} onClick={() => { setOne(true) }}>On</div>
+            <div style={offStyle} onClick={() => { setOne(false) }} >Off</div>
             <div style={indicatorStyle}></div>
         </div>
     )
