@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {action} from '@storybook/addon-actions';
 import Accordion from './Accordion';
 
 export default {
@@ -6,8 +7,10 @@ export default {
     component: Accordion,
 }
 
-export const MenuCollapsedMode = () => <Accordion titleValue={"Menu"} colapsed={true} onChange={x => x} />
-export const UsersUnCollapsedMode = () => <Accordion titleValue={"Users"} colapsed={false} onChange={x => x} />
+const callbackAction = action('event fired')
+
+export const MenuCollapsedMode = () => <Accordion titleValue={"Menu"} colapsed={true} onChange={callbackAction} />
+export const UsersUnCollapsedMode = () => <Accordion titleValue={"Users"} colapsed={false} onChange={callbackAction} />
 export const ModeChanging = () => {
     const [value, setValue] = useState<boolean>(false);
     return <Accordion titleValue={"Users"} colapsed={value} onChange={() => {setValue(!value)}} />

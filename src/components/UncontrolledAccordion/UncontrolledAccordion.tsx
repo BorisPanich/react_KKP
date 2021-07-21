@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-type UncontrolledAccordionPropsType = {
+export type UncontrolledAccordionPropsType = {
     titleValue: string
 }
 
