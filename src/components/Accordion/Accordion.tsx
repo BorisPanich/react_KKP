@@ -1,6 +1,6 @@
 import React from 'react';
 
-type AccordionPropsType = {
+export type AccordionPropsType = {
   titleValue: string
   colapsed: boolean
   onChange: () => void
@@ -22,7 +22,7 @@ type AccordionTitlePropsType = {
 }
 
 function AccordionTitle(props: AccordionTitlePropsType) {
-  return <h2 onClick={props.onChange}>{props.title}</h2>
+  return <h2 onClick={(e) => props.onChange()}>{props.title}</h2>
 }
 
 type AccordionBodyPropsType = {

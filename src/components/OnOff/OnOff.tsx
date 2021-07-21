@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-type OnOffPropsType = {
-    on: boolean
+export type OnOffPropsType = {
+    on: boolean | undefined
     onClick: (on: boolean) => void
 }
 

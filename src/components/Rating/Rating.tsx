@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 export type RatingValueType = 0 | 1 | 2 | 3 | 4 | 5
 
 type RatingPropsType = {
-    value: RatingValueType
+    value: RatingValueType | undefined
     onClick: (value: RatingValueType) => void
 }
 
