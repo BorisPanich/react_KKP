@@ -3,11 +3,11 @@ import React, { useState } from 'react';
 export type RatingValueType = 0 | 1 | 2 | 3 | 4 | 5
 
 type RatingPropsType = {
-    value: RatingValueType | undefined
+    value: RatingValueType
     onClick: (value: RatingValueType) => void
 }
 
-function Rating(props: RatingPropsType) {
+export function Rating(props: RatingPropsType) {
 
     const [value, setValue] = useState(0);
 
@@ -35,5 +35,3 @@ function Star(props: StarPropsType) {
     </span>
 
 }
-
-export default Rating;

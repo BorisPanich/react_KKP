@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import OnOff from './OnOff';
+import {OnOff} from './OnOff';
 
 export default {
     title: 'OnOff',

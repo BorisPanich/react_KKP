@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { RatingValueType } from '../Rating/Rating';
 
 type UncontrolledRatingPropsType = {
-    // value: RatingValueType
-    // onClick: (value: RatingValueType) => void
+    defaultValue?: RatingValueType
+    onClick: (value: RatingValueType) => void
 }
 
-function UncontrolledRating(props: UncontrolledRatingPropsType) {
+export function UncontrolledRating(props: UncontrolledRatingPropsType) {
 
-    const [value, setValue] = useState(0);
+    const [value, setValue] = useState<RatingValueType>(props.defaultValue ? props.defaultValue : 0);
 
     return (
         <div>
@@ -32,5 +32,3 @@ function Star(props: StarPropsType) {
         {props.selected ? <b>- star -</b> : " star "}
     </span>
 }
-
-export default UncontrolledRating;

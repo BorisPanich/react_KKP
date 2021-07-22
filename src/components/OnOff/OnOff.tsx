@@ -5,7 +5,7 @@ export type OnOffPropsType = {
     onClick: (on: boolean) => void
 }
 
-function OnOff(props: OnOffPropsType) {
+export function OnOff(props: OnOffPropsType) {
 
     const onStyle = {
         width: "30px",
@@ -45,5 +45,3 @@ function OnOff(props: OnOffPropsType) {
     )
 
 }
-
-export default OnOff;

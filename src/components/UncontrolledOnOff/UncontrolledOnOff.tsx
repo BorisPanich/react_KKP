@@ -5,7 +5,7 @@ type UncontrolledOnOffPropsType = {
     onClick: (on: boolean) => void
 }
 
-function UncontrolledOnOff(props: UncontrolledOnOffPropsType) {
+export function UncontrolledOnOff(props: UncontrolledOnOffPropsType) {
 
     const [on, setOn] = useState(props.defaultOn ? props.defaultOn : false);
 
@@ -55,5 +55,3 @@ function UncontrolledOnOff(props: UncontrolledOnOffPropsType) {
     )
 
 }
-
-export default UncontrolledOnOff;
