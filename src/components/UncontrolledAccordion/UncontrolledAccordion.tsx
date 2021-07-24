@@ -14,7 +14,6 @@ export function UncontrolledAccordion(props: UncontrolledAccordionPropsType) {
     </div>
 }
 
-
 type AccordionTitlePropsType = {
     title: string
     onClick: () => void
