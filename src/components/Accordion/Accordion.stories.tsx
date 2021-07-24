@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { action } from '@storybook/addon-actions';
 import { Accordion, AccordionPropsType } from './Accordion';
-import { Meta, Story } from '@storybook/react';
+import { ComponentMeta, Meta, Story } from '@storybook/react';
 
 export type ParamCategoryType = 'Color' | 'Events' | 'Main';
 
@@ -27,7 +27,7 @@ export default {
         }
 
     }
-} as Meta;
+} as ComponentMeta<typeof Accordion>;
 
 const callbackAction = action('event fired')
 

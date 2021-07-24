@@ -1,12 +1,12 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
 import { UncontrolledOnOff } from './UncontrolledOnOff';
-import { ComponentStory } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 export default {
     title: 'UncontrolledOnOff',
     component: UncontrolledOnOff,
-}
+} as ComponentMeta<typeof UncontrolledOnOff>;
 
 const callbackAction = action('event fired')
 

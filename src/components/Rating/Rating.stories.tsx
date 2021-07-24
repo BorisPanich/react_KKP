@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions';
-import { ComponentStory, Meta } from '@storybook/react';
+import { ComponentMeta, ComponentStory, Meta } from '@storybook/react';
 import React, { useState } from 'react';
 import { getCategoryObj, ParamCategoryType } from '../Accordion/Accordion.stories';
 import { RatingValueType, Rating } from './Rating';
@@ -17,7 +17,7 @@ export default {
             ...getCategoryObj('Events')
         }
     }
-} as Meta;
+} as ComponentMeta<typeof Rating>;
 
 const callbackAction = action('event fired');
 
