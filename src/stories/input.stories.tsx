@@ -1,6 +1,7 @@
-import React, { ChangeEvent, ChangeEventHandler, useRef, useState } from 'react';
+import React, { ChangeEvent, useRef, useState } from 'react';
 import { Meta } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
+import { Checkbox, Select, TextField } from '@material-ui/core';
 
 export default {
     title: 'input',
@@ -41,7 +42,8 @@ export const ControlledInput = () => {
     const onChange = (e: ChangeEvent<HTMLInputElement>) => {
         setParentValue(e.currentTarget.value)
     }
-    return <input value={parentValue} onChange={onChange} />
+    // return <input value={parentValue} onChange={onChange} />
+    return <TextField value={parentValue} onChange={onChange} />
 }
 
 export const ControlledCheckbox = () => {
@@ -49,18 +51,23 @@ export const ControlledCheckbox = () => {
     const onChange = (e: ChangeEvent<HTMLInputElement>) => {
         setParentValue(e.currentTarget.checked)
     }
-    return <input type='checkbox' checked={parentValue} onChange={onChange} />
+    // return <input type='checkbox' checked={parentValue} onChange={onChange} />
+    return <Checkbox
+        checked={parentValue}
+        onChange={onChange}
+        color='primary'
+    />
 }
 
 export const ControlledSelect = () => {
     const [parentValue, setParentValue] = useState<string | undefined>(undefined);
-    const onChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    const onChange = (e: any) => {
         setParentValue(e.currentTarget.value)
     }
-    return <select value={parentValue} onChange={onChange} >
+    return <Select value={parentValue} onChange={onChange} >
         <option>none</option>
         <option value="1">Lida</option>
         <option value="2">Grodno</option>
         <option value="3">Mensk</option>
-    </select>
+    </Select>
 }

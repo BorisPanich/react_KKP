@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { action } from '@storybook/addon-actions';
-import { Accordion, AccordionPropsType } from './Accordion';
-import { ComponentMeta, Meta, Story } from '@storybook/react';
+import { Accordion } from './Accordion';
+import { ComponentMeta, ComponentStory, Meta, Story } from '@storybook/react';
 
 export type ParamCategoryType = 'Color' | 'Events' | 'Main';
 
@@ -31,7 +31,7 @@ export default {
 const callbackAction = action('event fired');
 const onClickCallback = action('same items was clicked');
 
-const Template: Story<AccordionPropsType> = (args) =>
+const Template: ComponentStory<typeof Accordion> = (args) =>
     <Accordion {...args} />;
 
 export const MenuCollapsedMode = Template.bind({});
@@ -52,7 +52,7 @@ UsersUnCollapsedMode.args = {
     onClick: onClickCallback
 };
 
-export const ModeChangingAccordion: Story<AccordionPropsType> = (args) => {
+export const ModeChangingAccordion: ComponentStory<typeof Accordion> = (args) => {
     const [value, setValue] = useState<boolean>(false);
     return <Accordion {...args}
         colapsed={value}
@@ -64,6 +64,6 @@ export const ModeChangingAccordion: Story<AccordionPropsType> = (args) => {
 ModeChangingAccordion.args = {
     titleValue: "Users",
     items: [{ title: 'Boris', value: 1 }, { title: 'Olga', value: 2 }, { title: 'Gleb', value: 3 }],
-    onClick: (id) => {alert(`my ${id} was clicked`)}
+    onClick: (id) => { alert(`my ${id} was clicked`) }
 }
 
