@@ -27,25 +27,29 @@ const callbackAction = action('event fired');
 
 const Template: ComponentStory<typeof Select> = (args) => <Select {...args} />
 
-export const WithOutValueSelect = Template.bind({});
+// export const WithOutValueSelect = Template.bind({});
+export const WithOutValueSelect: ComponentStory<typeof Select> = (args) => {
+    const [value, setValue] = useState(null);
+    return <Select {...args} value={value} onChange={setValue} />
+}
 WithOutValueSelect.args = {
     onChange: callbackAction,
     items: [
-        { value: 1, title: 'Lida' },
-        { value: 2, title: 'Grodno' },
-        { value: 3, title: 'Mensk' },
+        { value: 1, title: 'Mensk' },
+        { value: 2, title: 'Kiev' },
+        { value: 3, title: 'Moscow' },
     ]
 }
 
 export const WithValueSelect: ComponentStory<typeof Select> = (args) => {
-    const [value, setValue] = useState<number>(0);
+    const [value, setValue] = useState<number>(2);
     return <Select {...args} value={value} onChange={setValue} />
 }
 WithValueSelect.args = {
     onChange: callbackAction,
     items: [
-        { value: 1, title: 'Lida' },
-        { value: 2, title: 'Grodno' },
-        { value: 3, title: 'Mensk' },
+        { value: 1, title: 'Mensk' },
+        { value: 2, title: 'Kiev' },
+        { value: 3, title: 'Moscow' },
     ]
 }

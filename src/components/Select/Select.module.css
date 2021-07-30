@@ -1,0 +1,23 @@
+.select .main {
+    margin-top: 20px;
+    padding: 5px;
+    border: 1px solid black;
+    display: inline-block;
+    min-height: 20px;
+    min-width: 50px;
+}
+
+.items {
+    position: absolute;
+    padding: 5px;
+    border: 1px solid black;
+}
+
+.select.active .items {
+    display: block;
+}
+
+.item.selected {
+    background-color: rgb(19, 104, 21);
+    color: rgb(206, 206, 38)
+}
