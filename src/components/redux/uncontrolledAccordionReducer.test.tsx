@@ -8,7 +8,7 @@ test("reducer should to true", () => {
     /* action (действия) */
     const newState = reducer(state, { type: TOGGLE_COLLAPSED })
     /* expection (ожидание) */
-    expect(newState).toBe(true)
+    expect(newState.collapsed).toBe(true)
 })
 test("reducer should to false", () => {
     /* data (входящие данные) */
@@ -18,7 +18,7 @@ test("reducer should to false", () => {
     /* action (действия) */
     const newState = reducer(state, { type: TOGGLE_COLLAPSED })
     /* expection (ожидание) */
-    expect(newState).toBe(false)
+    expect(newState.collapsed).toBe(false)
 })
 
 test("reducer should to FakeType", () => {
