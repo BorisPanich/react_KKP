@@ -5,7 +5,7 @@ type UncontrolledOnOffPropsType = {
     onClick: (on: boolean) => void
 }
 
-export function UncontrolledOnOff(props: UncontrolledOnOffPropsType) {
+export const UncontrolledOnOff = React.memo(function UncontrolledOnOff(props: UncontrolledOnOffPropsType) {
 
     const [on, setOn] = useState(props.defaultOn ? props.defaultOn : false);
 
@@ -54,4 +54,4 @@ export function UncontrolledOnOff(props: UncontrolledOnOffPropsType) {
         </div>
     )
 
-}
+})

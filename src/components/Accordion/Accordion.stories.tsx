@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
 import { action } from '@storybook/addon-actions';
-import { Accordion } from './Accordion';
-import { ComponentMeta, ComponentStory, Meta, Story } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import React, { useState } from 'react';
+import Accordion from './Accordion';
 
 export type ParamCategoryType = 'Color' | 'Events' | 'Main';
 

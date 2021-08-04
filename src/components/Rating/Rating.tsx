@@ -8,7 +8,7 @@ type RatingPropsType = {
     color?: string
 }
 
-export function Rating(props: RatingPropsType) {
+export const Rating = React.memo(function Rating(props: RatingPropsType) {
 
     const [value, setValue] = useState(0);
 
@@ -22,7 +22,7 @@ export function Rating(props: RatingPropsType) {
         </div>
     )
 
-}
+})
 
 type StarPropsType = {
     selected: boolean

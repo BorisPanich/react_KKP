@@ -16,7 +16,7 @@ export type AccordionPropsType = {
   onClick: (value: any) => void
 }
 
-export function Accordion(props: AccordionPropsType) {
+function Accordion(props: AccordionPropsType) {
 
   return <div>
     <AccordionTitle title={props.titleValue}
@@ -51,3 +51,5 @@ function AccordionBody(props: AccordionBodyPropsType) {
     </ul>
   )
 }
+
+export default React.memo(Accordion);

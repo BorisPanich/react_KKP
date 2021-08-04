@@ -5,13 +5,13 @@ export type UncontrolledAccordionPropsType = {
     titleValue: string
 }
 
-export function UncontrolledAccordion(props: UncontrolledAccordionPropsType) {
+export const UncontrolledAccordion = React.memo(function UncontrolledAccordion(props: UncontrolledAccordionPropsType) {
 
     // const [colapsed, setColapsed] = useState<boolean>(false);
     /* useReducer - callback, принимающий reducer и первоначальное значение (false в данном случаи); Испльзуется при useState >3
     или при наличии сложной логики, а не при примитивных изменениях (типа false/true);
     dispatch(отправлять) отправит в reducer (React) action и оттуда вернется colapsed с измененым значением */
-    const [state, dispatch] = useReducer(reducer, { collapsed: false});
+    const [state, dispatch] = useReducer(reducer, { collapsed: false });
 
     return <div>
         {/* <AccordionTitle title={props.titleValue} onClick={() => { setColapsed(!colapsed) }} /> */}
@@ -19,7 +19,7 @@ export function UncontrolledAccordion(props: UncontrolledAccordionPropsType) {
         {/* при значении !state.colapsed компонента отрисует то, что стоит по правую сторону от && */}
         {!state.collapsed && <AccordionBody />}
     </div>
-}
+})
 
 type AccordionTitlePropsType = {
     title: string

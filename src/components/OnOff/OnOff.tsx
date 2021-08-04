@@ -5,7 +5,7 @@ export type OnOffPropsType = {
     onClick: (on: boolean) => void
 }
 
-export function OnOff(props: OnOffPropsType) {
+export const OnOff = React.memo(function OnOff(props: OnOffPropsType) {
 
     const onStyle = {
         width: "30px",
@@ -44,4 +44,4 @@ export function OnOff(props: OnOffPropsType) {
         </div>
     )
 
-}
+})
