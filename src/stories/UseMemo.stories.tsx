@@ -45,3 +45,44 @@ export const DifficultCountingExemple = () => {
     </>
 
 }
+
+
+const UsersMemo = (props: { users: string[] }) => {
+    console.log("UsersMemo");
+    return <div>{
+        props.users.map((u, i) => <div key={i} >{u}</div>)
+    }</div>
+}
+
+/* React.memo - HOС, который позволяет не перерисовывать компоненту UsersMemo, 
+если не изменились входящие props */
+const Users = React.memo(UsersMemo);
+
+export const HelpsToReactMemo = () => {
+    console.log("HelpsToReactMemo");
+
+    const [counter, setCounter] = useState<number>(0);
+    const [users, setUsers] = useState<string[]>(["Boris", "Olha", "Gleb", "Nazar"]);
+
+    /* отфильтруем всех users, у которых имеется "О", */
+    /* в данном случаи будет происходить перерисовка UsersMemo 
+    const newArray = users.filter(u => u.toLowerCase().indexOf("a") > -1); */
+
+    /* useMemo используется всегда при map, sort, filter */
+    const newArray = useMemo(() => {
+        return users.filter(u => u.toLowerCase().indexOf("a") > -1);
+    }, [users])
+
+    const addUsers = () => {
+        const newUsers = [...users, "Angelina" + new Date().getTime()]
+        setUsers(newUsers)
+    }
+
+    return <>
+        <button onClick={() => setCounter(counter + 1)} >+</button>
+        <button onClick={() => addUsers()} >add Users</button>
+        {counter}
+        <Users users={newArray} />
+    </>
+
+}
