@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useMemo, useState } from 'react';
+import React, { ChangeEvent, useCallback, useMemo, useState } from 'react';
 import { ComponentMeta, ComponentStory, Meta, Story } from '@storybook/react';
 
 export default {
@@ -86,3 +86,46 @@ export const HelpsToReactMemo = () => {
     </>
 
 }
+
+export const LikeUseCallback = () => {
+    console.log("LikeUseCallback");
+
+    const [counter, setCounter] = useState<number>(0);
+    const [books, setBooks] = useState<string[]>(["React", "JS", "CSS", "HTMl"]);
+
+    /* useMemo */
+    const memoizedAddBook = useMemo(() => {
+        return () => {          // отсутствие этой строки требует уже useCallback
+            console.log(books);
+            const newBooks = [...books, "Angular" + new Date().getTime()]
+            setBooks(newBooks)
+        }
+    }, [books])
+
+    /* useCallback использовать нужно всегда, когда есть передоваемый 
+    в пропсах callback (обычно при большом количестве кнопок) */
+    const memoizedAddBook2 = useCallback(() => {
+        console.log(books);
+        const newBooks = [...books, "Angular" + new Date().getTime()]
+        setBooks(newBooks)
+    }, [books])
+
+    return <>
+        <button onClick={() => setCounter(counter + 1)} >+</button>
+        {counter}
+        <Book addBook={memoizedAddBook2} />
+    </>
+
+}
+
+type BooksSecretType = {
+    addBook: () => void
+}
+const BooksSecret = (props: BooksSecretType) => {
+    console.log("BookSecret");
+    return <>
+        <button onClick={() => props.addBook()} >add book</button>
+    </>
+}
+
+const Book = React.memo(BooksSecret);
