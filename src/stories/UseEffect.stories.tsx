@@ -1,5 +1,6 @@
 import { Meta } from '@storybook/react';
 import React, { useEffect, useState } from 'react';
+import { clearTimeout } from 'timers';
 
 export default {
     title: 'UseEffect',
@@ -51,19 +52,27 @@ export const SetTimeoutSetIntervalExemple = () => {
     /* setTimeout */
     useEffect(() => {
         console.log("useEffect SetTimeoutExemple");
-        setTimeout(() => {
+        const timeoutId = setTimeout(() => {
             console.log("setTimeout");
             document.title = fake.toString();
         }, 1000)
+
+        return () => {
+            clearTimeout(timeoutId)
+        }
     }, [counter])
 
     /* setInterval */
     useEffect(() => {
         console.log("useEffect SetIntervalExemple");
-        setInterval(() => {
+        const intervalId = setInterval(() => {
             console.log("setInterval");
             setCounter(state => state + 1);
         }, 1000)
+
+        return () => {
+            clearInterval(intervalId)
+        }
     }, [])
 
     return <>
@@ -74,5 +83,55 @@ export const SetTimeoutSetIntervalExemple = () => {
             result click:{fake}
             <button onClick={() => setFake(fake + 1)} > + fake</button>
         </div>
+    </>
+}
+
+export const ResetEffectExemple = () => {
+
+    const [counter, setCounter] = useState<number>(1);
+
+    console.log("ResetEffectExemple" + counter);
+
+    useEffect(() => {
+        console.log("useEffect occurred" + counter);
+
+        /* происходит зачистка (обновление) */
+        return () => {
+            console.log("reset effect" + counter);
+        }
+    }, [counter]);
+
+    const increase = () => {
+        return () => setCounter(counter + 1)
+    }
+
+    return <>
+        <div> result click: {counter}
+            <button onClick={increase} > + counter</button>
+        </div>
+    </>
+}
+
+export const KeyTrackerExemple = () => {
+
+    const [text, setText] = useState<string>("");
+
+    console.log("KeyTrackerExemple" + text);
+
+    useEffect(() => {
+        const handler = (e: KeyboardEvent) => {
+            console.log(e.key);
+            setText(text + e.key)
+        }
+        window.addEventListener("keypress", handler)
+
+        /* необходимо провести зачистку, чтобы не перезапускалось самостоятельно (ComponentWillUnMount) */
+        return () => {
+            window.removeEventListener("keypress", handler)
+        }
+    }, [text]);
+
+    return <>
+        result: {text}
     </>
 }
