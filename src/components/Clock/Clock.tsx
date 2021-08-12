@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from 'react';
+import { AnalogClock } from './AnalogClock';
+import { DigitalClock } from './DigitalClock';
 
-type ClockPropsType = {
-
+export type ClockPropsType = {
+    date: Date
 }
 
-const get2digitsString = (num: number) => num < 10 ? "0" + num : num;
+type PropsType = {
+    mode?: "digital" | "analog"
+}
 
-export const Clock: React.FC<ClockPropsType> = (props) => {
+// const get2digitsString = (num: number) => num < 10 ? "0" + num : num;
+
+export const Clock: React.FC<PropsType> = (props) => {
 
     const [date, setDate] = useState(new Date());
 
@@ -18,18 +24,22 @@ export const Clock: React.FC<ClockPropsType> = (props) => {
         }, 1000)
         /* componentWillUnMount, запуск в момент отключения компоненты,
         если не прописать, то будет происходить "tick" в фоновом режиме самостоятельно */
-        return clearInterval(intervalId);
+        // return clearInterval(intervalId);
     }, []);
 
-    const hoursString = get2digitsString(date.getHours());
-    const minutesString = get2digitsString(date.getMinutes());
-    const secondsString = get2digitsString(date.getSeconds());
+    
+    let view;
+
+    switch (props.mode) {
+        case 'analog':
+            view = <AnalogClock date={date} />
+            break;
+        case 'digital':
+        default:
+            view = <DigitalClock date={date} />
+    }
 
     return <div>
-        <span>{hoursString}</span>
-        :
-        <span>{minutesString}</span>
-        :
-        <span>{secondsString}</span>
+        {view}
     </div>
 }

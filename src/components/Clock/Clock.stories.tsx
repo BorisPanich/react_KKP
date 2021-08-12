@@ -1,7 +1,5 @@
-import { action } from '@storybook/addon-actions';
-import { ComponentMeta, ComponentStory, Meta } from '@storybook/react';
-import React, { useState } from 'react';
-import { createBlock } from 'typescript';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import React from 'react';
 import { Clock } from './Clock';
 
 export default {
@@ -9,10 +7,13 @@ export default {
     component: Clock,
 } as ComponentMeta<typeof Clock>;
 
-const callbackAction = action('event fired');
+export const BaseAnalogExample = () => {
+    return <Clock mode={'analog'} />
+}
 
-const Template: ComponentStory<typeof Clock> = (args) =>
-    <Clock {...args} />;
+export const BaseDigitalExample = () => {
+    return <Clock mode={'digital'} />
+}
 
 export const BaseExemple: ComponentStory<typeof Clock> = (args) => {
 
